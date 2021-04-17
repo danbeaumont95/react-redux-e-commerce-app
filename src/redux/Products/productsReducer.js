@@ -64,11 +64,12 @@ const reducer = (state = initialState, action) => {
         ),
       };
     case ADJUST_QTY:
+      console.log(typeof action.payload.qty, "typeQty");
       return {
         ...state,
         cart: state.cart.map((item) =>
           item.item_name === action.payload.item_name
-            ? { ...item, qty: action.payload.qty }
+            ? { ...item, qty: +action.payload.qty }
             : item
         ),
       };

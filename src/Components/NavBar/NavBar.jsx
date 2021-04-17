@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 import './NavBar.css'
-import { Link } from '@reach/router'
+import { Link, Router } from '@reach/router'
+import LoginForm from '../Login/LoginForm'
 
 const NavBar = ({ cart }) => {
     const [cartCount, setCartCount] =  useState(0)
@@ -20,12 +21,16 @@ const NavBar = ({ cart }) => {
     }, [cart, cartCount])
 
     return (
-        
+        <>
+        {/* <Router>
+            <LoginPage path="/login" />
+        </Router> */}
         <div className="navbar">
 
             <Link to="/">
-                <h2 className="navbar__logo">Redux Shopping Cart</h2>
+                <h2 className="navbar__logo">DanShop</h2>
             </Link>
+           <LoginForm />
             <Link to="/cart">
                 <div className="navbar__cart">
                 <h3 className="cart__title">Cart</h3>
@@ -35,6 +40,7 @@ const NavBar = ({ cart }) => {
             </Link>
             
         </div>
+        </>
     )
 }
 

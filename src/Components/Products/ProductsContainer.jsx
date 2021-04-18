@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { fetchProducts } from '../../redux'
 import './ProductsContainer.css'
 import { addToCart, loadCurrentItem } from '../../redux/Products/productsActions'
-import { Link } from '@reach/router'
+import { Link, Router } from '@reach/router'
+import AddNewProduct from './AddNewProduct';
 
 function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurrentItem }) {
     useEffect(() => {
@@ -14,6 +15,15 @@ function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurre
     ) : productsData.error ? (
         <h2>{productsData.error}</h2>
     ) : (
+        <>
+        <div>
+            {/* <Router>
+                <AddNewProduct path="/sell"/>
+            </Router> */}
+        <Link to="/sell">
+            <h2>Sell a product</h2>
+        </Link>
+        </div>
         <div>
             <h2 className="product-list-title">Products List</h2>
             <div>
@@ -56,6 +66,7 @@ function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurre
                 })}
             </div>
         </div>
+        </>
     )
 }
 

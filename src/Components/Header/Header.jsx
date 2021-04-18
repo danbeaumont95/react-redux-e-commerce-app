@@ -14,12 +14,7 @@ const Header = ({ setUser, username }) => {
         ) : (
           <LoginPage setUser={setUser} username={username} />
         )}
-        <Link to="/" style={{ "text-decoration": "none" }}>
-          <h2 className="App__HeaderTitle">
-            {username}
-            {/* <img className="header__tentIcon" src={tentIcon} alt="" /> */}
-          </h2>
-        </Link>
+   
       </section>
     </>
   );

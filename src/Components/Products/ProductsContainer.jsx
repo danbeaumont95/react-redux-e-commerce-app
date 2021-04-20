@@ -36,13 +36,7 @@ function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurre
     ) : (
         <>
         <div>
-        
-        {/* <Link to="/sell"> */}
-            {/* <h2>Sell a product</h2> */}
-            
-            {/* {console.log(this.props.username, 'props in container')} */}
             <AddNewProduct path="/sell" username={username} addNewProduct={addNewProduct}/>
-        {/* </Link> */}
         </div>
         <div>
             <h2 className="product-list-title">Products List</h2>
@@ -54,12 +48,12 @@ function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurre
                     return (
                         <section className="product-galleries">
                         <div className="product-info">
-                            {/* <Link to={`/products/${product.item_name}`}> */}
                                 <h4 className="product-item-name">{product.item_name}</h4>
-                            {/* </Link> */}
+
                         <p className="product-price">Price: £{product.price}</p>
                         <img className="product-image" src={product.img_url} alt="product"/>
-                        <p className="product-seller">Seller: {product.seller_name}</p>
+                        
+                        <p className="product-seller">Seller: <Link to={`/sellers/${product.seller_name}`}>{product.seller_name}</Link></p>
                         <div className="product__buttons">
                             <Link to={`/products/${product.item_name}`}>
                             <button

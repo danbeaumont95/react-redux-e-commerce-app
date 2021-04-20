@@ -33,7 +33,6 @@ export default class AddNewProduct extends Component {
         return (
             <div>
     <h2>Sell a product</h2>
-    {console.log(this.props.username, 'usernameZZZ')}
             {loggedIn ? 
             
         <form>

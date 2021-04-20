@@ -10,6 +10,8 @@ import SingleItem from "./Components/SingleItem/SingleItem";
 import LoginForm from "./Components/Login/LoginForm";
 import Header from "./Components/Header/Header";
 import AddNewProduct from "./Components/Products/AddNewProduct";
+import ProductsBySellerName from "./Components/Products/ProductsBySellerName";
+import SellerInfo from "./Components/Seller/SellerInfo";
 
 class App extends Component {
   state = { username: "", ownerOrUser: "" };
@@ -26,6 +28,8 @@ class App extends Component {
             <Cart path="/cart" />
             <SingleItem path="/products/:item_name" />
             {/* <AddNewProduct path="/sell" username={this.state.username} /> */}
+            <ProductsBySellerName path="/sellers/:seller_name/products" />
+            <SellerInfo path="/sellers/:seller_name" />
           </Router>
         </div>
         {/* </Provider> */}

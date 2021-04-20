@@ -18,15 +18,25 @@ export const postUser = (newUser) => {
 };
 
 export const postNewProduct = (productdata) => {
-  console.log(productdata, "PD");
   return request.post("/products", productdata).then((res) => {
-    console.log(res, "res");
-    console.log(res.data);
     return res.data.product;
   });
 };
 
 export const deleteProductByItemName = (item_name) => {
-  console.log(item_name, "item_name");
   return request.delete(`/products/${item_name}`);
+};
+
+export const getProductsBySellerName = (seller_name) => {
+  console.log(seller_name, "seller name api");
+  return request.get(`/sellers/${seller_name}/products`).then((res) => {
+    return res.data.products;
+  });
+};
+
+export const getSellerInfo = (seller_name) => {
+  console.log(seller_name, "seller");
+  return request.get(`/sellers/${seller_name}`).then((res) => {
+    return res.data.seller;
+  });
 };

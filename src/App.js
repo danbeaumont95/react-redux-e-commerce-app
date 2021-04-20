@@ -21,11 +21,11 @@ class App extends Component {
         {/* <Provider store={store}> */}
         <div className="App">
           <Router>
-            <ProductsContainer path="/" />
+            <ProductsContainer path="/" username={this.state.username} />
 
             <Cart path="/cart" />
             <SingleItem path="/products/:item_name" />
-            <AddNewProduct path="/sell" username={this.state.username} />
+            {/* <AddNewProduct path="/sell" username={this.state.username} /> */}
           </Router>
         </div>
         {/* </Provider> */}

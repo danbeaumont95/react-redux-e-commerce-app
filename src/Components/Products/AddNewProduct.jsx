@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import * as api from '../../api'
 
 export default class AddNewProduct extends Component {
     state={
         item_name: "",
-        price: null,
+        price: "",
         img_url: "",
         description: "",
         seller_name: "",
@@ -13,6 +14,17 @@ export default class AddNewProduct extends Component {
 
     handleInput = ({ target: { id, value } }) => {
         this.setState({ [id]: value })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const { item_name, price, img_url, description, seller_name, item_type } = this.state;
+        // const { seller_name } = this.props.username;
+        const productdata = {item_name, price, img_url, description, seller_name, item_type}
+        api.postNewProduct(productdata)
+        .then(({product}) => {
+            this.props.addNewProduct(product)
+        })
     }
 
     render() {
@@ -26,42 +38,42 @@ export default class AddNewProduct extends Component {
             
         <form>
         <input type="text"
-        placeholder="item_name"
+        placeholder="Item name"
         id="item_name"
         value={this.state.item_name}
         onChange={this.handleInput}
         className="add_new_item_input"
         />
-        <input type="number"
-        placeholder="price"
+        <input type="text"
+        placeholder="Price"
         id="price"
         value={this.state.price}
         onChange={this.handleInput}
         className="add_new_item_input"
         />
         <input type="text"
-        placeholder="img_url"
+        placeholder="Image Url"
         id="img_url"
         value={this.state.img_url}
         onChange={this.handleInput}
         className="add_new_item_input"
         />
         <input type="text"
-        placeholder="description"
+        placeholder="Description"
         id="description"
         value={this.state.description}
         onChange={this.handleInput}
         className="add_new_item_input"
         />
         <input type="text"
-        placeholder="seller_name"
+        placeholder="Seller Name"
         id="seller_name"
-        value={this.props.username}
+        value={this.state.username}
         onChange={this.handleInput}
         className="add_new_item_input"
         />
         <input type="text"
-        placeholder="item_type"
+        placeholder="Item Type"
         id="item_type"
         value={this.state.item_type}
         onChange={this.handleInput}

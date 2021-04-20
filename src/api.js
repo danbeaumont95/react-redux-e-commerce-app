@@ -16,3 +16,12 @@ export const getUser = (username) => {
 export const postUser = (newUser) => {
   return request.post(`/users`, newUser);
 };
+
+export const postNewProduct = (productdata) => {
+  console.log(productdata, "PD");
+  return request.post("/products", productdata).then((res) => {
+    console.log(res, "res");
+    console.log(res.data);
+    return res.data.product;
+  });
+};

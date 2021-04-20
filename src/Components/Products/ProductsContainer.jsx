@@ -5,24 +5,43 @@ import './ProductsContainer.css'
 import { addToCart, loadCurrentItem } from '../../redux/Products/productsActions'
 import { Link, Router } from '@reach/router'
 import AddNewProduct from './AddNewProduct';
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 
-function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurrentItem }) {
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+
+function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurrentItem, username }) {
     useEffect(() => {
         fetchProducts()
     }, [])
+
+    const addNewProduct = (newProduct) => {
+        // this.setState(
+            return ({productsData}) => {
+                return { productsData: [newProduct, ...productsData] }
+            // })
+        
+    }
+}
+    console.log(username, 'usernameprops')
     return productsData.loading ? (
-        <h2>Loading...</h2>
+        <ClipLoader css={override} size={150} />
     ) : productsData.error ? (
         <h2>{productsData.error}</h2>
     ) : (
         <>
         <div>
-            {/* <Router>
-                <AddNewProduct path="/sell"/>
-            </Router> */}
-        <Link to="/sell">
-            <h2>Sell a product</h2>
-        </Link>
+        
+        {/* <Link to="/sell"> */}
+            {/* <h2>Sell a product</h2> */}
+            
+            {/* {console.log(this.props.username, 'props in container')} */}
+            <AddNewProduct path="/sell" username={username} addNewProduct={addNewProduct}/>
+        {/* </Link> */}
         </div>
         <div>
             <h2 className="product-list-title">Products List</h2>
@@ -69,6 +88,8 @@ function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurre
         </>
     )
 }
+
+
 
 const mapStateToProps = state => {
     return {

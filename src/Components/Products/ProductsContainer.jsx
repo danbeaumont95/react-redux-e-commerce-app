@@ -7,6 +7,7 @@ import { Link, Router } from '@reach/router'
 import AddNewProduct from './AddNewProduct';
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
+import DeleteProduct from './DeleteProduct';
 
 const override = css`
   display: block;
@@ -75,6 +76,7 @@ function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurre
                         >
                             Add To Cart
                         </button>
+                        <DeleteProduct item_name={product.item_name} username={username} seller_name={product.seller_name}/>
                         </div>
                         
                         

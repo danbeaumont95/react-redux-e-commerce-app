@@ -25,3 +25,8 @@ export const postNewProduct = (productdata) => {
     return res.data.product;
   });
 };
+
+export const deleteProductByItemName = (item_name) => {
+  console.log(item_name, "item_name");
+  return request.delete(`/products/${item_name}`);
+};

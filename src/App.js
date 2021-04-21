@@ -12,6 +12,7 @@ import Header from "./Components/Header/Header";
 import AddNewProduct from "./Components/Products/AddNewProduct";
 import ProductsBySellerName from "./Components/Products/ProductsBySellerName";
 import SellerInfo from "./Components/Seller/SellerInfo";
+import ItemTypeButtons from "./Components/Products/ItemTypeButtons";
 
 class App extends Component {
   state = { username: "", ownerOrUser: "" };
@@ -30,6 +31,7 @@ class App extends Component {
             {/* <AddNewProduct path="/sell" username={this.state.username} /> */}
             <ProductsBySellerName path="/sellers/:seller_name/products" />
             <SellerInfo path="/sellers/:seller_name" />
+            <ItemTypeButtons path="/all" />
           </Router>
         </div>
         {/* </Provider> */}

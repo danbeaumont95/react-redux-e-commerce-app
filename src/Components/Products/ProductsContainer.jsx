@@ -8,6 +8,8 @@ import AddNewProduct from './AddNewProduct';
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 import DeleteProduct from './DeleteProduct';
+import * as api from '../../api'
+import AllProductsList from './ItemTypeButtons';
 
 const override = css`
   display: block;
@@ -36,6 +38,7 @@ function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurre
     ) : (
         <>
         <div>
+            <AllProductsList />
             <AddNewProduct path="/sell" username={username} addNewProduct={addNewProduct}/>
         </div>
         <div>
@@ -44,8 +47,9 @@ function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurre
                 {productsData &&
                 productsData.products &&
                 productsData.products.map((product) =>{ 
-
+                    console.log(product, 'product');
                     return (
+                        <>
                         <section className="product-galleries">
                         <div className="product-info">
                                 <h4 className="product-item-name">{product.item_name}</h4>
@@ -76,11 +80,17 @@ function ProductsContainer  ({ productsData, fetchProducts, addToCart, loadCurre
                         
                         </div>
                         </section>
+                        <div>
+                            {console.log(product, 'productLog')}
+                          
+                        </div>
+                        </>
                     )
                 
                 })}
             </div>
         </div>
+     
         </>
     )
 }

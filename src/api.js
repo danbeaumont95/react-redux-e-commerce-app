@@ -40,3 +40,25 @@ export const getSellerInfo = (seller_name) => {
     return res.data.seller;
   });
 };
+
+export const getProductsByItemType = (item_type) => {
+  console.log(item_type);
+  return request.get(`/products/type/${item_type}`).then((res) => {
+    console.log(res, "res GPBIT");
+    return res.data.products;
+  });
+};
+
+export const getAllProducts = () => {
+  return request.get("/products").then((res) => {
+    console.log(res.data.products, "resAllProds");
+    return res.data.products;
+  });
+};
+
+export const getAllProductTypes = () => {
+  return request.get("/products/types/all").then((res) => {
+    console.log(res, "allproducttypesAPI");
+    return res.data;
+  });
+};
